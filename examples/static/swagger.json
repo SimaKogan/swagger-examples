@@ -1,0 +1,53 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Access API",
+    "version": "1.0.0",
+    "description": "Tiny API that grants a user access to a server."
+  },
+  "schemes": ["http", "https"],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Health check",
+        "description": "Returns a message showing the app is up",
+        "produces": ["application/json"],
+        "responses": {
+          "200": { "description": "Successful operation" }
+        }
+      }
+    },
+    "/access": {
+      "post": {
+        "tags": ["Access"],
+        "summary": "Grant access",
+        "description": "Grants access to a user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "access data",
+            "in": "body",
+            "description": "JSON data for the api",
+            "required": true,
+            "schema": { "$ref": "#/definitions/AccessData" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "User granted access" },
+          "400": { "description": "Invalid request data" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AccessData": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "example": "dipto" },
+        "server": { "type": "string", "example": "server1" }
+      }
+    }
+  }
+}

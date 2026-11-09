@@ -1,0 +1,11 @@
+tags:
+  - Hello World
+summary: Greeting
+description: Returns a plain-text greeting.
+produces:
+  - text/plain
+responses:
+  200:
+    description: Successful response
+    examples:
+      text/plain: Hello World!!!
